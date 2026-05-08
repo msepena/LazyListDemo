@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:LazyListDemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/PhotoModels">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/ImageCacheKit">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/PhotosNetworking">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/PhotosFeature">
+   </FileRef>
+</Workspace>

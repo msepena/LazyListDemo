@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Xcode user-specific data
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+
+# Xcode build output
+DerivedData/
+build/
+*.xcresult/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/*/Package.resolved
+
+# Xcode workspace user data (keep xcshareddata, ignore per-user)
+*.xcworkspace/xcuserdata/
+
+# Claude Code local settings (per-user permissions, not shared)
+.claude/settings.local.json
+
+# Other
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM

@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A0000001CCCC0000CCCC0001 /* PhotoModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0001 /* PhotoModels */; };
+		A0000001CCCC0000CCCC0002 /* ImageCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0002 /* ImageCacheKit */; };
+		A0000001CCCC0000CCCC0003 /* PhotosNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0003 /* PhotosNetworking */; };
+		A0000001CCCC0000CCCC0004 /* PhotosFeature in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0004 /* PhotosFeature */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		7CAC0ECD2FAD9A8300C89C76 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +59,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0000001CCCC0000CCCC0001 /* PhotoModels in Frameworks */,
+				A0000001CCCC0000CCCC0002 /* ImageCacheKit in Frameworks */,
+				A0000001CCCC0000CCCC0003 /* PhotosNetworking in Frameworks */,
+				A0000001CCCC0000CCCC0004 /* PhotosFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +123,10 @@
 			);
 			name = LazyListDemo;
 			packageProductDependencies = (
+				A0000001BBBB0000BBBB0001 /* PhotoModels */,
+				A0000001BBBB0000BBBB0002 /* ImageCacheKit */,
+				A0000001BBBB0000BBBB0003 /* PhotosNetworking */,
+				A0000001BBBB0000BBBB0004 /* PhotosFeature */,
 			);
 			productName = LazyListDemo;
 			productReference = 7CAC0EBF2FAD9A8000C89C76 /* LazyListDemo.app */;
@@ -195,6 +210,12 @@
 			);
 			mainGroup = 7CAC0EB62FAD9A8000C89C76;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A0000001AAAA0000AAAA0001 /* XCLocalSwiftPackageReference "Packages/PhotoModels" */,
+				A0000001AAAA0000AAAA0002 /* XCLocalSwiftPackageReference "Packages/ImageCacheKit" */,
+				A0000001AAAA0000AAAA0003 /* XCLocalSwiftPackageReference "Packages/PhotosNetworking" */,
+				A0000001AAAA0000AAAA0004 /* XCLocalSwiftPackageReference "Packages/PhotosFeature" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7CAC0EC02FAD9A8000C89C76 /* Products */;
 			projectDirPath = "";
@@ -414,7 +435,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -445,7 +466,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -465,7 +486,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LazyListDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LazyListDemo";
 			};
@@ -486,7 +507,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LazyListDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LazyListDemo";
 			};
@@ -505,7 +526,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = LazyListDemo;
 			};
@@ -524,7 +545,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = LazyListDemo;
 			};
@@ -570,6 +591,44 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A0000001AAAA0000AAAA0001 /* XCLocalSwiftPackageReference "Packages/PhotoModels" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/PhotoModels;
+		};
+		A0000001AAAA0000AAAA0002 /* XCLocalSwiftPackageReference "Packages/ImageCacheKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ImageCacheKit;
+		};
+		A0000001AAAA0000AAAA0003 /* XCLocalSwiftPackageReference "Packages/PhotosNetworking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/PhotosNetworking;
+		};
+		A0000001AAAA0000AAAA0004 /* XCLocalSwiftPackageReference "Packages/PhotosFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/PhotosFeature;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0000001BBBB0000BBBB0001 /* PhotoModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoModels;
+		};
+		A0000001BBBB0000BBBB0002 /* ImageCacheKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ImageCacheKit;
+		};
+		A0000001BBBB0000BBBB0003 /* PhotosNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotosNetworking;
+		};
+		A0000001BBBB0000BBBB0004 /* PhotosFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotosFeature;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7CAC0EB72FAD9A8000C89C76 /* Project object */;
 }
