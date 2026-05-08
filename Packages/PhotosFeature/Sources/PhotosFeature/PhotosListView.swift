@@ -1,20 +1,22 @@
 import SwiftUI
+import PhotoModels
 
 public struct PhotosListView: View {
     @State private var viewModel = PhotosViewModel()
+    let onSelectPhoto: (Photo) -> Void
 
-    public init() {}
+    public init(onSelectPhoto: @escaping (Photo) -> Void) {
+        self.onSelectPhoto = onSelectPhoto
+    }
 
     public var body: some View {
-        NavigationStack {
-            content
-                .navigationTitle("Photos")
-        }
-        .task {
-            if case .idle = viewModel.state {
-                await viewModel.load()
+        content
+            .navigationTitle("Photos")
+            .task {
+                if case .idle = viewModel.state {
+                    await viewModel.load()
+                }
             }
-        }
     }
 
     @ViewBuilder
@@ -23,8 +25,11 @@ public struct PhotosListView: View {
         case .idle, .loading:
             ProgressView()
         case .loaded(let photos):
-            List(photos) { PhotoRow(photo: $0) }
-                .refreshable { await viewModel.load() }
+            List(photos) { photo in
+                Button { onSelectPhoto(photo) } label: { PhotoRow(photo: photo) }
+                    .buttonStyle(.plain)
+            }
+            .refreshable { await viewModel.load() }
         case .failed(let message):
             ContentUnavailableView(
                 "Couldn't load photos",

@@ -30,8 +30,11 @@ this module shouldn't import it directly.)
 
 ## Public surface
 
-- `PhotosListView` (struct): the navigation-stacked photo list with
-  pull-to-refresh and error states.
+- `PhotosListView` (struct): photo list with pull-to-refresh and error states.
+  Emits row taps via the `onSelectPhoto: (Photo) -> Void` closure; the
+  embedding view is responsible for the `NavigationStack`.
+- `PhotoDetailView` (struct): per-photo detail page (large image, author,
+  dimensions, source link). Stateless — takes a `Photo`.
 - `PhotoRow`, `RemoteImageView`, `PhotosViewModel`: also public so they can be
   composed or tested, but `PhotosListView` is the primary export.
 

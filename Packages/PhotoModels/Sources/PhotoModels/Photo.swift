@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Photo: Identifiable, Codable, Sendable {
+public struct Photo: Identifiable, Codable, Hashable, Sendable {
     public let id: String
     public let author: String
     public let width: Int
