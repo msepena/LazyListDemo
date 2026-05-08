@@ -9,14 +9,16 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PhotoModels"),
-        .package(path: "../PhotosNetworking")
+        .package(path: "../PhotosNetworking"),
+        .package(path: "../ImageUI")
     ],
     targets: [
         .target(
             name: "PhotosFeature",
             dependencies: [
                 .product(name: "PhotoModels", package: "PhotoModels"),
-                .product(name: "PhotosNetworking", package: "PhotosNetworking")
+                .product(name: "PhotosNetworking", package: "PhotosNetworking"),
+                .product(name: "ImageUI", package: "ImageUI")
             ],
             swiftSettings: [
                 .defaultIsolation(MainActor.self)

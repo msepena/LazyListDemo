@@ -1,6 +1,6 @@
 import SwiftUI
 import PhotoModels
-import PhotosFeature
+import ImageUI
 
 public struct PhotoDetailView: View {
     public let photo: Photo

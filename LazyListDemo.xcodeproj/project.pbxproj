@@ -12,6 +12,7 @@
 		A0000001CCCC0000CCCC0003 /* PhotosNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0003 /* PhotosNetworking */; };
 		A0000001CCCC0000CCCC0004 /* PhotosFeature in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0004 /* PhotosFeature */; };
 		A0000001CCCC0000CCCC0005 /* PhotoDetailFeature in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0005 /* PhotoDetailFeature */; };
+		A0000001CCCC0000CCCC0006 /* ImageUI in Frameworks */ = {isa = PBXBuildFile; productRef = A0000001BBBB0000BBBB0006 /* ImageUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 				A0000001CCCC0000CCCC0003 /* PhotosNetworking in Frameworks */,
 				A0000001CCCC0000CCCC0004 /* PhotosFeature in Frameworks */,
 				A0000001CCCC0000CCCC0005 /* PhotoDetailFeature in Frameworks */,
+				A0000001CCCC0000CCCC0006 /* ImageUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +132,7 @@
 				A0000001BBBB0000BBBB0003 /* PhotosNetworking */,
 				A0000001BBBB0000BBBB0004 /* PhotosFeature */,
 				A0000001BBBB0000BBBB0005 /* PhotoDetailFeature */,
+				A0000001BBBB0000BBBB0006 /* ImageUI */,
 			);
 			productName = LazyListDemo;
 			productReference = 7CAC0EBF2FAD9A8000C89C76 /* LazyListDemo.app */;
@@ -219,6 +222,7 @@
 				A0000001AAAA0000AAAA0003 /* XCLocalSwiftPackageReference "Packages/PhotosNetworking" */,
 				A0000001AAAA0000AAAA0004 /* XCLocalSwiftPackageReference "Packages/PhotosFeature" */,
 				A0000001AAAA0000AAAA0005 /* XCLocalSwiftPackageReference "Packages/PhotoDetailFeature" */,
+				A0000001AAAA0000AAAA0006 /* XCLocalSwiftPackageReference "Packages/ImageUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7CAC0EC02FAD9A8000C89C76 /* Products */;
@@ -617,6 +621,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/PhotoDetailFeature;
 		};
+		A0000001AAAA0000AAAA0006 /* XCLocalSwiftPackageReference "Packages/ImageUI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ImageUI;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -639,6 +647,10 @@
 		A0000001BBBB0000BBBB0005 /* PhotoDetailFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PhotoDetailFeature;
+		};
+		A0000001BBBB0000BBBB0006 /* ImageUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ImageUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

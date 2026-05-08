@@ -9,14 +9,14 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PhotoModels"),
-        .package(path: "../PhotosFeature")
+        .package(path: "../ImageUI")
     ],
     targets: [
         .target(
             name: "PhotoDetailFeature",
             dependencies: [
                 .product(name: "PhotoModels", package: "PhotoModels"),
-                .product(name: "PhotosFeature", package: "PhotosFeature")
+                .product(name: "ImageUI", package: "ImageUI")
             ],
             swiftSettings: [
                 .defaultIsolation(MainActor.self)

@@ -13,9 +13,10 @@ embeds.
 - **`@Observable` view models.** No `ObservableObject`, no `@Published`. Use the
   `Observation` macro and reference the VM via `@State` from the consuming view
   (it owns the lifecycle, even though the type is a class).
-- **Lazy image loading via `task(id:)`.** `RemoteImageView` uses
-  `.task(id: url) { ... }` so SwiftUI auto-cancels the load when a row
-  recycles. Don't use `.onAppear` + manual `Task` here.
+- **Lazy image loading via `task(id:)`.** Row thumbnails come from
+  `RemoteImageView` (in `ImageUI`), which uses `.task(id: url) { ... }` so
+  SwiftUI auto-cancels the load when a row recycles. Don't replace it with
+  `.onAppear` + manual `Task`.
 - **Public entry point = `PhotosListView`.** Anything else exposed publicly
   should be reviewed; the App target should not need to construct VMs or rows
   directly.
@@ -24,6 +25,7 @@ embeds.
 
 - `PhotoModels`
 - `PhotosNetworking`
+- `ImageUI` (for `RemoteImageView`)
 
 (`ImageCacheKit` is intentionally a transitive dep through `PhotosNetworking` —
 this module shouldn't import it directly.)
@@ -33,9 +35,8 @@ this module shouldn't import it directly.)
 - `PhotosListView` (struct): photo list with pull-to-refresh and error states.
   Emits row taps via the `onSelectPhoto: (Photo) -> Void` closure; the
   embedding view is responsible for the `NavigationStack`.
-- `PhotoRow`, `RemoteImageView`, `PhotosViewModel`: also public so they can be
-  composed or tested (and `RemoteImageView` is reused by `PhotoDetailFeature`),
-  but `PhotosListView` is the primary export.
+- `PhotoRow`, `PhotosViewModel`: also public so they can be composed or
+  tested, but `PhotosListView` is the primary export.
 
 ## Tests
 

@@ -1,5 +1,6 @@
 import SwiftUI
 import PhotoModels
+import ImageUI
 
 public struct PhotoRow: View {
     public let photo: Photo

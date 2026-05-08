@@ -10,14 +10,16 @@ Per-photo detail screen for the LazyListDemo app.
 - **Stateless `PhotoDetailView`.** No view model — content is fully derived
   from the input `Photo`. Add a VM only if per-photo loading (EXIF,
   comments, etc.) is introduced later.
-- **Reuse `RemoteImageView` from `PhotosFeature`.** Don't duplicate the
-  image-loading view; the dependency on `PhotosFeature` is intentional so
-  list and detail share the same caching path.
+- **Use `RemoteImageView` from `ImageUI`.** Don't duplicate the
+  image-loading view; both list and detail share the same caching path
+  through that shared module. This module must not depend on
+  `PhotosFeature` — sibling feature modules should not depend on each
+  other.
 
 ## Dependencies
 
 - `PhotoModels`
-- `PhotosFeature`
+- `ImageUI`
 
 ## Public surface
 

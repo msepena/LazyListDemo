@@ -10,32 +10,37 @@ SwiftUI iOS app named **LazyListDemo** (bundle id `com.test.LazyListDemo`). Disp
 - Swift language mode: **6.0** (`SWIFT_VERSION = 6.0`)
 - Approachable Concurrency enabled on the App target (`SWIFT_APPROACHABLE_CONCURRENCY = YES`, `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`)
 - Targeted device family: universal (iPhone + iPad)
-- Workspace: `LazyListDemo.xcworkspace` (contains `LazyListDemo.xcodeproj` + 5 local Swift packages)
+- Workspace: `LazyListDemo.xcworkspace` (contains `LazyListDemo.xcodeproj` + 6 local Swift packages)
 
 ## Modular layout
 
-The code is split across **five local Swift packages** under `Packages/`, plus the App target. Each package has its own `Package.swift`, isolated tests, and a module-scoped `CLAUDE.md` that's auto-loaded when working on that module's files.
+The code is split across **six local Swift packages** under `Packages/`, plus the App target. Each package has its own `Package.swift`, isolated tests, and a module-scoped `CLAUDE.md` that's auto-loaded when working on that module's files.
 
 ```
 App (LazyListDemo.xcodeproj target — LazyListDemoApp + ContentView + AppCoordinator)
  ├─ PhotosFeature       (list — VMs + Views, MainActor by default)
  │   ├─ PhotoModels     (Photo struct — Foundation only)
- │   └─ PhotosNetworking (PhotoService + ImageLoader actor)
- │       ├─ PhotoModels
- │       └─ ImageCacheKit (NSCache wrapper)
+ │   ├─ PhotosNetworking (PhotoService + ImageLoader actor)
+ │   │   ├─ PhotoModels
+ │   │   └─ ImageCacheKit (NSCache wrapper)
+ │   └─ ImageUI         (RemoteImageView — MainActor by default)
+ │       └─ PhotosNetworking
  └─ PhotoDetailFeature  (detail — MainActor by default)
      ├─ PhotoModels
-     └─ PhotosFeature   (reuses RemoteImageView)
+     └─ ImageUI
 ```
+
+Feature modules (`PhotosFeature`, `PhotoDetailFeature`) are siblings — neither depends on the other. Shared SwiftUI imagery lives in `ImageUI`.
 
 Per-module guidance:
 - `Packages/PhotoModels/CLAUDE.md`
 - `Packages/ImageCacheKit/CLAUDE.md`
 - `Packages/PhotosNetworking/CLAUDE.md`
+- `Packages/ImageUI/CLAUDE.md`
 - `Packages/PhotosFeature/CLAUDE.md`
 - `Packages/PhotoDetailFeature/CLAUDE.md`
 
-`PhotosFeature` and `PhotoDetailFeature` opt into `defaultIsolation(MainActor.self)` (set in their `Package.swift`). The leaf modules stay nonisolated by default — that's why `ImageCache` doesn't need a `nonisolated` keyword and `ImageLoader`'s `actor` isolation is explicit rather than an opt-out.
+`PhotosFeature`, `PhotoDetailFeature`, and `ImageUI` opt into `defaultIsolation(MainActor.self)` (set in their `Package.swift`). The leaf modules stay nonisolated by default — that's why `ImageCache` doesn't need a `nonisolated` keyword and `ImageLoader`'s `actor` isolation is explicit rather than an opt-out.
 
 ## Build and test
 
