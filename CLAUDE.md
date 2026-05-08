@@ -47,28 +47,33 @@ Per-module guidance:
 All commands run from the repo root. Substitute a real device name from `xcrun simctl list devices available` if the example destination is unavailable.
 
 ```bash
-# Build the whole app (workspace builds all 4 packages + App in dependency order)
+# Build the whole app (workspace builds all 6 packages + App in dependency order)
 xcodebuild -workspace LazyListDemo.xcworkspace -scheme LazyListDemo \
   -destination 'platform=iOS Simulator,name=iPhone 17' build
 
-# Run app + integration tests
+# Run app + integration tests (covers LazyListDemoTests + UI tests; package
+# tests run via their own schemes — see below)
 xcodebuild -workspace LazyListDemo.xcworkspace -scheme LazyListDemo \
   -destination 'platform=iOS Simulator,name=iPhone 17' test
 
 # Build/test a specific module
 xcodebuild -workspace LazyListDemo.xcworkspace -scheme PhotosFeature \
   -destination 'platform=iOS Simulator,name=iPhone 17' test
-# (replace PhotosFeature with PhotoModels, ImageCacheKit, or PhotosNetworking)
+# Schemes: PhotoModels, ImageCacheKit, PhotosNetworking, ImageUI,
+#          PhotosFeature, PhotoDetailFeature
 
 # PhotoModels is platform-agnostic — fastest feedback via host SwiftPM:
 swift test --package-path Packages/PhotoModels
 ```
 
-There are also project-scoped slash commands wrapping these — see `.claude/skills/`:
-`/build-models`, `/test-models`, `/build-cache`, `/test-cache`, `/build-networking`, `/test-networking`, `/build-feature`, `/test-feature`.
+Project-scoped slash commands in `.claude/skills/` wrap the four
+original modules: `/build-models`, `/test-models`, `/build-cache`,
+`/test-cache`, `/build-networking`, `/test-networking`, `/build-feature`,
+`/test-feature`. `ImageUI` and `PhotoDetailFeature` don't have skills
+yet — invoke them via the `xcodebuild -scheme ...` form above.
 
 ## Test framework split
 
-- **Module tests** (`Packages/<Module>/Tests/`) — Swift Testing (`import Testing`, `@Test`, `#expect`). PhotosFeature tests run on `@MainActor` since the test target doesn't inherit the module's default isolation.
-- **`LazyListDemoTests/`** — Swift Testing, hosted by the App target.
+- **Module tests** (`Packages/<Module>/Tests/`) — Swift Testing (`import Testing`, `@Test`, `#expect`). Tests for MainActor-isolated modules (`PhotosFeature`, `PhotoDetailFeature`, `ImageUI`) annotate `@MainActor` explicitly because the test target doesn't inherit the module's default isolation.
+- **`LazyListDemoTests/`** — Swift Testing, hosted by the App target. Contains `AppCoordinatorTests` plus the example test.
 - **`LazyListDemoUITests/`** — XCTest (`XCTestCase`, `XCUIApplication`). UI tests launch the app via `XCUIApplication().launch()` and run on `@MainActor`. `LazyListDemoUITestsLaunchTests` exists for launch-performance measurements.
