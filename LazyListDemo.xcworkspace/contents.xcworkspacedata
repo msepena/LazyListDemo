@@ -16,4 +16,7 @@
    <FileRef
       location = "group:Packages/PhotosFeature">
    </FileRef>
+   <FileRef
+      location = "group:Packages/PhotoDetailFeature">
+   </FileRef>
 </Workspace>

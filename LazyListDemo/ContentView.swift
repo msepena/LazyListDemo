@@ -1,5 +1,6 @@
 import SwiftUI
 import PhotosFeature
+import PhotoDetailFeature
 
 struct ContentView: View {
     @State private var coordinator = AppCoordinator()
