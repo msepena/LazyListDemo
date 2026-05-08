@@ -66,11 +66,17 @@ xcodebuild -workspace LazyListDemo.xcworkspace -scheme PhotosFeature \
 swift test --package-path Packages/PhotoModels
 ```
 
-Project-scoped slash commands in `.claude/skills/` wrap the four
-original modules: `/build-models`, `/test-models`, `/build-cache`,
-`/test-cache`, `/build-networking`, `/test-networking`, `/build-feature`,
-`/test-feature`. `ImageUI` and `PhotoDetailFeature` don't have skills
-yet — invoke them via the `xcodebuild -scheme ...` form above.
+Project-scoped slash commands in `.claude/skills/` wrap each module's
+build/test pair:
+
+| Module               | Build              | Test              |
+| -------------------- | ------------------ | ----------------- |
+| `PhotoModels`        | `/build-models`    | `/test-models`    |
+| `ImageCacheKit`      | `/build-cache`     | `/test-cache`     |
+| `PhotosNetworking`   | `/build-networking`| `/test-networking`|
+| `ImageUI`            | `/build-imageui`   | `/test-imageui`   |
+| `PhotosFeature`      | `/build-feature`   | `/test-feature`   |
+| `PhotoDetailFeature` | `/build-detail`    | `/test-detail`    |
 
 ## Test framework split
 
