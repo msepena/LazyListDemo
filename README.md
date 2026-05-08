@@ -2,6 +2,10 @@
 
 A small SwiftUI iOS app that displays the [Picsum](https://picsum.photos) `/v2/list` photo feed in a lazy `List`. Demonstrates NSCache-backed thumbnail caching, in-flight request deduplication, and bounded prefetch — split across modular Swift packages.
 
+<p align="center">
+  <img src="Screenshots/home.png" alt="LazyListDemo running on iPhone 17 simulator" width="300">
+</p>
+
 ## Requirements
 
 - Xcode 16+ (Swift 6.0 language mode)
