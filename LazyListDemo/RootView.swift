@@ -2,7 +2,7 @@ import SwiftUI
 import PhotosFeature
 import PhotoDetailFeature
 
-struct ContentView: View {
+struct RootView: View {
     @State private var coordinator = AppCoordinator()
 
     var body: some View {
@@ -21,5 +21,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    RootView()
 }
