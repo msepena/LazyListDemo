@@ -14,7 +14,7 @@ public struct PhotoService: Sendable {
     }
 
     @concurrent
-    public func fetchPhotos() async throws -> [Photo] {
+    public func list() async throws -> [Photo] {
         let (data, _) = try await session.data(from: endpoint)
         return try JSONDecoder().decode([Photo].self, from: data)
     }

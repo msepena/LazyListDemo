@@ -26,7 +26,7 @@ public final class PhotosViewModel {
             state = .loading
         }
         do {
-            let photos = try await service.fetchPhotos()
+            let photos = try await service.list()
             state = .loaded(photos)
 
             let warmupURLs = photos.prefix(12).map { $0.thumbnailURL() }
