@@ -25,8 +25,9 @@ public struct RemoteImageView: View {
                     .resizable()
                     .aspectRatio(contentMode: contentMode)
             } else {
-                Color.gray.opacity(0.15)
+                Color(.secondarySystemFill)
                 ProgressView()
+                    .tint(.secondary)
             }
         }
         .task(id: url) {

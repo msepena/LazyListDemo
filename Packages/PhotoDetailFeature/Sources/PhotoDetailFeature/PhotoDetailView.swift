@@ -5,6 +5,8 @@ import ImageUI
 public struct PhotoDetailView: View {
     public let photo: Photo
 
+    @ScaledMetric(relativeTo: .body) private var maxImageHeight: CGFloat = 480
+
     public init(photo: Photo) {
         self.photo = photo
     }
@@ -21,7 +23,8 @@ public struct PhotoDetailView: View {
                     CGFloat(photo.width) / CGFloat(photo.height),
                     contentMode: .fit
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .frame(maxHeight: maxImageHeight)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .padding(.horizontal)
 
                 VStack(alignment: .leading, spacing: 8) {
@@ -36,11 +39,17 @@ public struct PhotoDetailView: View {
                     }
                     .accessibilityHint("Opens in your browser")
                 }
+                .frame(maxWidth: 680, alignment: .leading)
                 .padding(.horizontal)
             }
             .padding(.vertical)
         }
         .navigationTitle(photo.author)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                ShareLink(item: photo.url)
+            }
+        }
     }
 }
