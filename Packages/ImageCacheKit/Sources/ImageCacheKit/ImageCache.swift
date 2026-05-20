@@ -1,5 +1,11 @@
 import UIKit
 
+/// Thread-safe in-memory image cache backed by `NSCache`.
+///
+/// The `@unchecked Sendable` conformance is safe because the only stored
+/// property is `NSCache`, which Foundation documents as thread-safe. Do not
+/// add a mutable stored property without introducing a lock or converting
+/// this type to an actor.
 public final class ImageCache: @unchecked Sendable {
     public static let shared = ImageCache()
 

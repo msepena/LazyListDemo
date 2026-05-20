@@ -15,6 +15,9 @@ public actor ImageLoader {
         if let hit = cache.image(for: url) { return hit }
         if let existing = inFlight[url] { return try await existing.value }
 
+        // Intentionally unstructured: the download finishes and warms the
+        // cache even if the calling task is cancelled, so a recycled row that
+        // scrolls back into view still gets a cache hit.
         let task = Task {
             let (data, _) = try await URLSession.shared.data(from: url)
             guard let image = UIImage(data: data) else {
@@ -36,14 +39,14 @@ public actor ImageLoader {
 
             for _ in 0..<maxConcurrent {
                 guard let url = iterator.next() else { break }
-                group.addTask { [weak self] in
-                    _ = try? await self?.image(for: url)
+                group.addTask {
+                    _ = try? await self.image(for: url)
                 }
             }
             while await group.next() != nil {
                 guard let url = iterator.next() else { continue }
-                group.addTask { [weak self] in
-                    _ = try? await self?.image(for: url)
+                group.addTask {
+                    _ = try? await self.image(for: url)
                 }
             }
         }

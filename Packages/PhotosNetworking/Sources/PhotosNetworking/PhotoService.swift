@@ -16,6 +16,7 @@ public struct PhotoService: Sendable {
     @concurrent
     public func list() async throws -> [Photo] {
         let (data, _) = try await session.data(from: endpoint)
+        try Task.checkCancellation()
         return try JSONDecoder().decode([Photo].self, from: data)
     }
 }

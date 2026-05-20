@@ -49,7 +49,7 @@ public struct PhotoDetailView: View {
             .padding(.vertical)
         }
         .navigationTitle(photo.author)
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: photo.url)
