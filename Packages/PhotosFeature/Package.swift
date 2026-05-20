@@ -26,7 +26,10 @@ let package = Package(
         ),
         .testTarget(
             name: "PhotosFeatureTests",
-            dependencies: ["PhotosFeature"]
+            dependencies: [
+                "PhotosFeature",
+                .product(name: "PhotosNetworking", package: "PhotosNetworking")
+            ]
         )
     ],
     swiftLanguageModes: [.v6]
