@@ -17,7 +17,7 @@ public struct PhotoDetailView: View {
                 RemoteImageView(
                     url: photo.detailURL(maxDimension: 1600),
                     contentMode: .fit,
-                    accessibilityLabel: Text("Photo by \(photo.author)")
+                    accessibilityLabel: Text("Photo by \(photo.author)", bundle: .module)
                 )
                 .aspectRatio(
                     CGFloat(photo.width) / CGFloat(photo.height),
@@ -33,11 +33,15 @@ public struct PhotoDetailView: View {
                     Text("\(photo.width) × \(photo.height)")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
-                        .accessibilityLabel("\(photo.width) by \(photo.height) pixels")
+                        .accessibilityLabel(Text("\(photo.width) by \(photo.height) pixels", bundle: .module))
                     Link(destination: photo.url) {
-                        Label("View on Picsum", systemImage: "arrow.up.right.square")
+                        Label {
+                            Text("View on Picsum", bundle: .module)
+                        } icon: {
+                            Image(systemName: "arrow.up.right.square")
+                        }
                     }
-                    .accessibilityHint("Opens in your browser")
+                    .accessibilityHint(Text("Opens in your browser", bundle: .module))
                 }
                 .frame(maxWidth: 680, alignment: .leading)
                 .padding(.horizontal)

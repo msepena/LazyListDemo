@@ -29,7 +29,7 @@ public struct PhotoRow: View {
         }
         .padding(.vertical, 4)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Photo by \(photo.author), \(photo.width) by \(photo.height) pixels")
-        .accessibilityHint("Shows the full photo")
+        .accessibilityLabel(Text("Photo by \(photo.author), \(photo.width) by \(photo.height) pixels", bundle: .module))
+        .accessibilityHint(Text("Shows the full photo", bundle: .module))
     }
 }

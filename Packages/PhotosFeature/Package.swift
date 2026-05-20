@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "PhotosFeature",
+    defaultLocalization: "en",
     platforms: [.iOS("26.4")],
     products: [
         .library(name: "PhotosFeature", targets: ["PhotosFeature"])
@@ -19,6 +20,9 @@ let package = Package(
                 .product(name: "PhotoModels", package: "PhotoModels"),
                 .product(name: "PhotosNetworking", package: "PhotosNetworking"),
                 .product(name: "ImageUI", package: "ImageUI")
+            ],
+            resources: [
+                .process("Localizable.xcstrings")
             ],
             swiftSettings: [
                 .defaultIsolation(MainActor.self)

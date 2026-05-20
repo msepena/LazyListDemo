@@ -9,7 +9,7 @@ public struct PhotosListView: View {
 
     public var body: some View {
         content
-            .navigationTitle("Photos")
+            .navigationTitle(Text("Photos", bundle: .module))
             .task {
                 if case .idle = viewModel.state {
                     await viewModel.load()
@@ -21,7 +21,9 @@ public struct PhotosListView: View {
     private var content: some View {
         switch viewModel.state {
         case .idle, .loading:
-            ProgressView("Loading photos…")
+            ProgressView {
+                Text("Loading photos…", bundle: .module)
+            }
         case .loaded(let photos):
             List(photos) { photo in
                 NavigationLink(value: photo) {
@@ -31,12 +33,18 @@ public struct PhotosListView: View {
             .refreshable { await viewModel.load() }
         case .failed(let error):
             ContentUnavailableView {
-                Label("Couldn't load photos", systemImage: errorIcon(for: error))
+                Label {
+                    Text("Couldn't load photos", bundle: .module)
+                } icon: {
+                    Image(systemName: errorIcon(for: error))
+                }
             } description: {
                 Text(error.localizedDescription)
             } actions: {
-                Button("Retry") {
+                Button {
                     Task { await viewModel.load() }
+                } label: {
+                    Text("Retry", bundle: .module)
                 }
             }
         }
