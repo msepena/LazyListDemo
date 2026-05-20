@@ -4,9 +4,11 @@ import PhotoModels
 
 /// The photo feed: a scrolling list with loading, error, and loaded states.
 public struct PhotosListView: View {
-    @State private var viewModel = PhotosViewModel()
+    @State private var viewModel: PhotosViewModel
 
-    public init() {}
+    public init(viewModel: PhotosViewModel = PhotosViewModel()) {
+        _viewModel = State(initialValue: viewModel)
+    }
 
     public var body: some View {
         content
@@ -60,3 +62,37 @@ public struct PhotosListView: View {
         return "exclamationmark.triangle"
     }
 }
+
+#Preview {
+    let viewModel = PhotosViewModel()
+    viewModel.state = .loaded([
+        Photo(
+            id: "10",
+            author: "Paul Jarvis",
+            width: 2500,
+            height: 1667,
+            url: URL(string: "https://picsum.photos/id/10")!,
+            downloadURL: URL(string: "https://picsum.photos/id/10/2500/1667")!
+        ),
+        Photo(
+            id: "20",
+            author: "Aleks Dorohovich",
+            width: 3670,
+            height: 2462,
+            url: URL(string: "https://picsum.photos/id/20")!,
+            downloadURL: URL(string: "https://picsum.photos/id/20/3670/2462")!
+        ),
+        Photo(
+            id: "30",
+            author: "Vadim Sherbakov",
+            width: 1280,
+            height: 901,
+            url: URL(string: "https://picsum.photos/id/30")!,
+            downloadURL: URL(string: "https://picsum.photos/id/30/1280/901")!
+        )
+    ])
+    return NavigationStack {
+        PhotosListView(viewModel: viewModel)
+    }
+}
+
