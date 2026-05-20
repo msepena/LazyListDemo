@@ -13,7 +13,8 @@ public struct PhotoDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 RemoteImageView(
-                    url: photo.thumbnailURL(size: 800),
+                    url: photo.detailURL(maxDimension: 1600),
+                    contentMode: .fit,
                     accessibilityLabel: Text("Photo by \(photo.author)")
                 )
                 .aspectRatio(

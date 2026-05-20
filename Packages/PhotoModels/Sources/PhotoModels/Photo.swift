@@ -29,7 +29,17 @@ public struct Photo: Identifiable, Codable, Hashable, Sendable {
         case downloadURL = "download_url"
     }
 
-    public func thumbnailURL(size: Int = 200) -> URL? {
-        URL(string: "https://picsum.photos/id/\(id)/\(size)/\(size)")
+    public func thumbnailURL(size: Int = 200) -> URL {
+        // Picsum ids from /v2/list are numeric strings, so this always parses.
+        URL(string: "https://picsum.photos/id/\(id)/\(size)/\(size)")!
+    }
+
+    public func detailURL(maxDimension: Int = 1600) -> URL {
+        let longestSide = max(width, height, 1)
+        let scale = longestSide > maxDimension ? Double(maxDimension) / Double(longestSide) : 1
+        let scaledWidth = max(1, Int((Double(width) * scale).rounded()))
+        let scaledHeight = max(1, Int((Double(height) * scale).rounded()))
+        // Picsum ids from /v2/list are numeric strings, so this always parses.
+        return URL(string: "https://picsum.photos/id/\(id)/\(scaledWidth)/\(scaledHeight)")!
     }
 }

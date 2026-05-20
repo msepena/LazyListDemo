@@ -29,5 +29,41 @@ import Foundation
         url: "https://example.com",
         downloadURL: "https://example.com"
     )
-    #expect(photo.thumbnailURL(size: 150)?.absoluteString == "https://picsum.photos/id/42/150/150")
+    #expect(photo.thumbnailURL(size: 150).absoluteString == "https://picsum.photos/id/42/150/150")
+}
+
+@Test func detailURLPreservesLandscapeAspectRatio() {
+    let photo = Photo(
+        id: "7",
+        author: "x",
+        width: 4000,
+        height: 3000,
+        url: "u",
+        downloadURL: "u"
+    )
+    #expect(photo.detailURL(maxDimension: 1600).absoluteString == "https://picsum.photos/id/7/1600/1200")
+}
+
+@Test func detailURLPreservesPortraitAspectRatio() {
+    let photo = Photo(
+        id: "7",
+        author: "x",
+        width: 3000,
+        height: 4000,
+        url: "u",
+        downloadURL: "u"
+    )
+    #expect(photo.detailURL(maxDimension: 1600).absoluteString == "https://picsum.photos/id/7/1200/1600")
+}
+
+@Test func detailURLKeepsDimensionsWhenSmallerThanMax() {
+    let photo = Photo(
+        id: "7",
+        author: "x",
+        width: 800,
+        height: 600,
+        url: "u",
+        downloadURL: "u"
+    )
+    #expect(photo.detailURL(maxDimension: 1600).absoluteString == "https://picsum.photos/id/7/800/600")
 }

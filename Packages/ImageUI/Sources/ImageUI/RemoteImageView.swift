@@ -3,12 +3,18 @@ import PhotosNetworking
 
 public struct RemoteImageView: View {
     public let url: URL?
+    private let contentMode: ContentMode
     private let accessibilityLabel: Text?
 
     @State private var image: UIImage?
 
-    public init(url: URL?, accessibilityLabel: Text? = nil) {
+    public init(
+        url: URL?,
+        contentMode: ContentMode = .fill,
+        accessibilityLabel: Text? = nil
+    ) {
         self.url = url
+        self.contentMode = contentMode
         self.accessibilityLabel = accessibilityLabel
     }
 
@@ -17,7 +23,7 @@ public struct RemoteImageView: View {
             if let image {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFill()
+                    .aspectRatio(contentMode: contentMode)
             } else {
                 Color.gray.opacity(0.15)
                 ProgressView()
