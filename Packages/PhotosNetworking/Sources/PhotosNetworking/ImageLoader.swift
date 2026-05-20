@@ -1,6 +1,7 @@
 import UIKit
 import ImageCacheKit
 
+/// Loads and caches remote images, de-duplicating in-flight requests.
 public actor ImageLoader {
     public static let shared = ImageLoader()
 
@@ -11,6 +12,7 @@ public actor ImageLoader {
         self.cache = cache
     }
 
+    /// Returns the image at `url`, serving a cached copy when available.
     public func image(for url: URL) async throws -> UIImage {
         if let hit = cache.image(for: url) { return hit }
         if let existing = inFlight[url] { return try await existing.value }
@@ -33,6 +35,7 @@ public actor ImageLoader {
         return image
     }
 
+    /// Warms the cache for `urls`, keeping at most `maxConcurrent` downloads in flight.
     public func prefetch(_ urls: [URL], maxConcurrent: Int = 6) async {
         await withTaskGroup(of: Void.self) { group in
             var iterator = urls.makeIterator()

@@ -2,6 +2,7 @@ import SwiftUI
 import PhotoModels
 import ImageUI
 
+/// A full-screen view of one photo with its metadata.
 public struct PhotoDetailView: View {
     public let photo: Photo
 

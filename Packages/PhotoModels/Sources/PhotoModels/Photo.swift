@@ -1,5 +1,6 @@
 import Foundation
 
+/// A photo's metadata from the Picsum `/v2/list` feed.
 public struct Photo: Identifiable, Codable, Hashable, Sendable {
     public let id: String
     public let author: String
@@ -24,7 +25,7 @@ public struct Photo: Identifiable, Codable, Hashable, Sendable {
         self.downloadURL = downloadURL
     }
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id, author, width, height, url
         case downloadURL = "download_url"
     }

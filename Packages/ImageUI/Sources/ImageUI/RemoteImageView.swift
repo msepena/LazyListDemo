@@ -1,6 +1,7 @@
 import SwiftUI
 import PhotosNetworking
 
+/// A SwiftUI view that asynchronously loads and displays a remote image.
 public struct RemoteImageView: View {
     public let url: URL?
     private let contentMode: ContentMode

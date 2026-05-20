@@ -2,6 +2,7 @@ import SwiftUI
 import Foundation
 import PhotoModels
 
+/// The photo feed: a scrolling list with loading, error, and loaded states.
 public struct PhotosListView: View {
     @State private var viewModel = PhotosViewModel()
 

@@ -2,6 +2,7 @@ import SwiftUI
 import PhotoModels
 import ImageUI
 
+/// A single photo row — thumbnail, author, and dimensions.
 public struct PhotoRow: View {
     public let photo: Photo
 

@@ -3,6 +3,7 @@ import Observation
 import PhotoModels
 import PhotosNetworking
 
+/// Loads the photo feed and exposes its `LoadState` to the list view.
 @Observable
 public final class PhotosViewModel {
     public enum LoadState {
