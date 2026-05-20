@@ -31,12 +31,10 @@ public struct PhotoDetailView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .accessibilityLabel("\(photo.width) by \(photo.height) pixels")
-                    if let sourceURL = URL(string: photo.url) {
-                        Link(destination: sourceURL) {
-                            Label("View on Picsum", systemImage: "arrow.up.right.square")
-                        }
-                        .accessibilityHint("Opens in your browser")
+                    Link(destination: photo.url) {
+                        Label("View on Picsum", systemImage: "arrow.up.right.square")
                     }
+                    .accessibilityHint("Opens in your browser")
                 }
                 .padding(.horizontal)
             }

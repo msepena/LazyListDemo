@@ -5,16 +5,16 @@ public struct Photo: Identifiable, Codable, Hashable, Sendable {
     public let author: String
     public let width: Int
     public let height: Int
-    public let url: String
-    public let downloadURL: String
+    public let url: URL
+    public let downloadURL: URL
 
     public init(
         id: String,
         author: String,
         width: Int,
         height: Int,
-        url: String,
-        downloadURL: String
+        url: URL,
+        downloadURL: URL
     ) {
         self.id = id
         self.author = author

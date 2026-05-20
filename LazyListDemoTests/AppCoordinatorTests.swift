@@ -1,4 +1,5 @@
 import Testing
+import Foundation
 import PhotoModels
 @testable import LazyListDemo
 
@@ -9,8 +10,8 @@ struct AppCoordinatorTests {
         author: "Test",
         width: 100,
         height: 100,
-        url: "https://example.com",
-        downloadURL: "https://example.com/full"
+        url: URL(string: "https://example.com")!,
+        downloadURL: URL(string: "https://example.com/full")!
     )
 
     @Test func startsWithEmptyPath() {

@@ -17,7 +17,7 @@ import Foundation
     let photo = try JSONDecoder().decode(Photo.self, from: json)
     #expect(photo.id == "0")
     #expect(photo.author == "Alejandro Escamilla")
-    #expect(photo.downloadURL == "https://picsum.photos/id/0/5616/3744")
+    #expect(photo.downloadURL.absoluteString == "https://picsum.photos/id/0/5616/3744")
 }
 
 @Test func thumbnailURLFormatsCorrectly() {
@@ -26,8 +26,8 @@ import Foundation
         author: "x",
         width: 100,
         height: 100,
-        url: "https://example.com",
-        downloadURL: "https://example.com"
+        url: URL(string: "https://example.com")!,
+        downloadURL: URL(string: "https://example.com")!
     )
     #expect(photo.thumbnailURL(size: 150).absoluteString == "https://picsum.photos/id/42/150/150")
 }
@@ -38,8 +38,8 @@ import Foundation
         author: "x",
         width: 4000,
         height: 3000,
-        url: "u",
-        downloadURL: "u"
+        url: URL(string: "https://example.com")!,
+        downloadURL: URL(string: "https://example.com")!
     )
     #expect(photo.detailURL(maxDimension: 1600).absoluteString == "https://picsum.photos/id/7/1600/1200")
 }
@@ -50,8 +50,8 @@ import Foundation
         author: "x",
         width: 3000,
         height: 4000,
-        url: "u",
-        downloadURL: "u"
+        url: URL(string: "https://example.com")!,
+        downloadURL: URL(string: "https://example.com")!
     )
     #expect(photo.detailURL(maxDimension: 1600).absoluteString == "https://picsum.photos/id/7/1200/1600")
 }
@@ -62,8 +62,8 @@ import Foundation
         author: "x",
         width: 800,
         height: 600,
-        url: "u",
-        downloadURL: "u"
+        url: URL(string: "https://example.com")!,
+        downloadURL: URL(string: "https://example.com")!
     )
     #expect(photo.detailURL(maxDimension: 1600).absoluteString == "https://picsum.photos/id/7/800/600")
 }
