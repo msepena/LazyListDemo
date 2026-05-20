@@ -29,6 +29,7 @@ public struct PhotosListView: View {
                 NavigationLink(value: photo) {
                     PhotoRow(photo: photo)
                 }
+                .onAppear { viewModel.prefetchAhead(of: photo) }
             }
             .refreshable { await viewModel.load() }
         case .failed(let error):

@@ -43,4 +43,12 @@ public final class PhotosViewModel {
             state = .failed(error)
         }
     }
+
+    func prefetchAhead(of photo: Photo, windowSize: Int = 12) {
+        guard case .loaded(let photos) = state,
+              let index = photos.firstIndex(of: photo) else { return }
+        let window = photos[index...].prefix(windowSize).map { $0.thumbnailURL() }
+        prefetchTask?.cancel()
+        prefetchTask = Task { await ImageLoader.shared.prefetch(window) }
+    }
 }
