@@ -23,7 +23,7 @@ public struct PhotosListView: View {
     private var content: some View {
         switch viewModel.state {
         case .idle, .loading:
-            ProgressView()
+            ProgressView("Loading photos…")
         case .loaded(let photos):
             List(photos) { photo in
                 Button { onSelectPhoto(photo) } label: { PhotoRow(photo: photo) }
