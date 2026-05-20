@@ -9,7 +9,7 @@ public final class PhotosViewModel {
         case idle
         case loading
         case loaded([Photo])
-        case failed(String)
+        case failed(Error)
     }
 
     public var state: LoadState = .idle
@@ -40,7 +40,7 @@ public final class PhotosViewModel {
             // URLSession surfaces task cancellation as URLError(.cancelled).
             state = previousState
         } catch {
-            state = .failed(error.localizedDescription)
+            state = .failed(error)
         }
     }
 }

@@ -30,11 +30,11 @@ public struct PhotosListView: View {
                     .buttonStyle(.plain)
             }
             .refreshable { await viewModel.load() }
-        case .failed(let message):
+        case .failed(let error):
             ContentUnavailableView(
                 "Couldn't load photos",
                 systemImage: "wifi.slash",
-                description: Text(message)
+                description: Text(error.localizedDescription)
             )
         }
     }
