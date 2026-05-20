@@ -24,6 +24,7 @@ public struct RemoteImageView: View {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: contentMode)
+                    .flipsForRightToLeftLayoutDirection(false)
             } else {
                 Color(.secondarySystemFill)
                 ProgressView()
