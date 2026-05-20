@@ -3,14 +3,12 @@ import UIKit
 public final class ImageCache: @unchecked Sendable {
     public static let shared = ImageCache()
 
-    private let cache: NSCache<NSURL, UIImage> = {
-        let c = NSCache<NSURL, UIImage>()
-        c.countLimit = 200
-        c.totalCostLimit = 64 * 1024 * 1024
-        return c
-    }()
+    private let cache = NSCache<NSURL, UIImage>()
 
-    public init() {}
+    public init(countLimit: Int = 200, totalCostLimit: Int = 64 * 1024 * 1024) {
+        cache.countLimit = countLimit
+        cache.totalCostLimit = totalCostLimit
+    }
 
     public func image(for url: URL) -> UIImage? {
         cache.object(forKey: url as NSURL)
@@ -21,7 +19,7 @@ public final class ImageCache: @unchecked Sendable {
         cache.setObject(image, forKey: url as NSURL, cost: cost)
     }
 
-    public func remove(for url: URL) {
+    public func removeImage(for url: URL) {
         cache.removeObject(forKey: url as NSURL)
     }
 

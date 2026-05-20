@@ -10,7 +10,7 @@ import UIKit
     cache.insert(image, for: url)
     #expect(cache.image(for: url) != nil)
 
-    cache.remove(for: url)
+    cache.removeImage(for: url)
     #expect(cache.image(for: url) == nil)
 }
 

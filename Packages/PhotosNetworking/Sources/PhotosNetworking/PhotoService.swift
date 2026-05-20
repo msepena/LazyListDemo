@@ -2,8 +2,8 @@ import Foundation
 import PhotoModels
 
 public struct PhotoService: Sendable {
-    public let session: URLSession
-    public let endpoint: URL
+    let session: URLSession
+    let endpoint: URL
 
     public init(
         session: URLSession = .shared,

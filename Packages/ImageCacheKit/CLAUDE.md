@@ -16,7 +16,7 @@ Thread-safe in-memory image cache backed by `NSCache<NSURL, UIImage>`. Used by
 
 ## Public surface
 
-- `ImageCache` (class): `image(for:)`, `insert(_:for:)`, `remove(for:)`, `removeAll()`.
+- `ImageCache` (class): `image(for:)`, `insert(_:for:)`, `removeImage(for:)`, `removeAll()`.
 - `ImageCache.shared`: process-wide singleton used by ImageLoader.
 
 ## Tests

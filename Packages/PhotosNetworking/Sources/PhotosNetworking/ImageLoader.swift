@@ -4,10 +4,12 @@ import ImageCacheKit
 public actor ImageLoader {
     public static let shared = ImageLoader()
 
-    private let cache = ImageCache.shared
+    private let cache: ImageCache
     private var inFlight: [URL: Task<UIImage, Error>] = [:]
 
-    public init() {}
+    public init(cache: ImageCache = .shared) {
+        self.cache = cache
+    }
 
     public func image(for url: URL) async throws -> UIImage {
         if let hit = cache.image(for: url) { return hit }
