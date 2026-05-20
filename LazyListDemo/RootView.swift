@@ -1,4 +1,5 @@
 import SwiftUI
+import PhotoModels
 import PhotosFeature
 import PhotoDetailFeature
 
@@ -7,15 +8,16 @@ struct RootView: View {
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            PhotosListView { photo in
-                coordinator.showPhotoDetail(photo)
-            }
-            .navigationDestination(for: AppRoute.self) { route in
-                switch route {
-                case .photoDetail(let photo):
+            PhotosListView()
+                .navigationDestination(for: Photo.self) { photo in
                     PhotoDetailView(photo: photo)
                 }
-            }
+                .navigationDestination(for: AppRoute.self) { route in
+                    switch route {
+                    case .photoDetail(let photo):
+                        PhotoDetailView(photo: photo)
+                    }
+                }
         }
     }
 }

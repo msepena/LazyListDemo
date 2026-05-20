@@ -1,4 +1,5 @@
 import Observation
+import SwiftUI
 import PhotoModels
 
 enum AppRoute: Hashable {
@@ -7,10 +8,10 @@ enum AppRoute: Hashable {
 
 @Observable
 final class AppCoordinator {
-    var path: [AppRoute] = []
+    var path = NavigationPath()
 
     func showPhotoDetail(_ photo: Photo) {
-        path.append(.photoDetail(photo))
+        path.append(AppRoute.photoDetail(photo))
     }
 
     func pop() {
@@ -19,6 +20,6 @@ final class AppCoordinator {
     }
 
     func popToRoot() {
-        path.removeAll()
+        path.removeLast(path.count)
     }
 }

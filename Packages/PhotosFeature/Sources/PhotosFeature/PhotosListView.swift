@@ -3,11 +3,8 @@ import PhotoModels
 
 public struct PhotosListView: View {
     @State private var viewModel = PhotosViewModel()
-    let onSelectPhoto: (Photo) -> Void
 
-    public init(onSelectPhoto: @escaping (Photo) -> Void) {
-        self.onSelectPhoto = onSelectPhoto
-    }
+    public init() {}
 
     public var body: some View {
         content
@@ -26,8 +23,9 @@ public struct PhotosListView: View {
             ProgressView("Loading photos…")
         case .loaded(let photos):
             List(photos) { photo in
-                Button { onSelectPhoto(photo) } label: { PhotoRow(photo: photo) }
-                    .buttonStyle(.plain)
+                NavigationLink(value: photo) {
+                    PhotoRow(photo: photo)
+                }
             }
             .refreshable { await viewModel.load() }
         case .failed(let error):
